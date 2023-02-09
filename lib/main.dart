@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:scribble/scribble.dart';
 import 'package:scribble_test/draw_page.dart';
+import 'package:scribble_test/escribe.dart';
 import 'package:scribble_test/homescreen.dart';
 import 'package:scribble_test/images.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
   runApp(const MyApp());
 }
 
@@ -21,12 +28,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const DrawPage(),
       initialRoute: "home",
       routes: {
         "home": (context) => const HomeScreen(),
         "draw": (context) => DrawPage(
               list: vocales,
+            ),
+        "write": (context) => Escribe(
+              objetos: objetos,
+              audios: audios,
+              nombres: nombres,
             ),
       },
     );

@@ -28,6 +28,12 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, "draw");
                 },
                 child: const Text("Vocales")),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "write");
+                },
+                child: const Text("Escucha, Observa, y Escribe")),
           ],
         ),
       ),

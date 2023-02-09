@@ -56,17 +56,31 @@ class _DrawPageState extends State<DrawPage> {
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: size.height * 2,
+          height: size.height * 1.25,
           child: Stack(
             children: [
               //IMG
               // Text(current_page.toString()),
               SafeArea(
-                child: Image.asset(
-                  widget.list[current_page],
-                  width: size.width,
-                  height: size.height,
-                  fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.all(60.0),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(
+                        widget.list[current_page],
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Scribble(
